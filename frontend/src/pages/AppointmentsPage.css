@@ -1,0 +1,110 @@
+.appointments-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.appointments-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.appointments-page__header h2 { font-size: 1.75rem; }
+.appointments-page__header p { color: var(--text-tertiary); font-weight: 600; font-size: 0.875rem; }
+
+/* Tabs */
+.appointments-page__tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--bg-card);
+  padding: 6px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+}
+
+.appointments-page__tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+}
+
+.appointments-page__tab:hover {
+  background: var(--bg-secondary);
+}
+
+.appointments-page__tab.active {
+  background: var(--accent-orange);
+  color: white;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.appointments-page__tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  font-size: 0.688rem;
+  font-weight: 800;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.appointments-page__tab.active .appointments-page__tab-count {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* List */
+.appointments-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Prescription View */
+.prescription-view {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.prescription-view__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.prescription-view__header svg {
+  color: var(--accent-blue);
+}
+
+.prescription-view__header strong {
+  font-size: 1rem;
+}
+
+.prescription-view__header p {
+  font-size: 0.813rem;
+  color: var(--text-tertiary);
+}
+
+.prescription-view__content {
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  border-left: 4px solid var(--accent-green);
+}

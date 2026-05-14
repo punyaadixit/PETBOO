@@ -1,0 +1,501 @@
+.vets-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.vets-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vets-page__header h2 {
+  font-size: 1.75rem;
+}
+
+.vets-page__header p {
+  color: var(--text-tertiary);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* ── Location Permission Banner ── */
+.vets-page__loc-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  border-radius: var(--radius-2xl);
+  background: linear-gradient(135deg, #eef4ff 0%, #e8f0fe 50%, #dbeafe 100%);
+  border: 1.5px solid rgba(59, 130, 246, 0.2);
+  animation: slide-up 0.4s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.vets-page__loc-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.dark .vets-page__loc-banner {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(99, 102, 241, 0.06) 100%);
+  border-color: rgba(59, 130, 246, 0.15);
+}
+
+.vets-page__loc-banner-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+}
+
+.vets-page__loc-banner-icon.spinning {
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vets-page__loc-banner-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.vets-page__loc-banner-content h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.vets-page__loc-banner-content p {
+  font-size: 0.813rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.vets-page__loc-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.btn-loc-allow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px !important;
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-xl) !important;
+  background: linear-gradient(135deg, #3b82f6, #6366f1) !important;
+  color: white !important;
+  border: none !important;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+  transition: all 0.25s ease;
+}
+
+.btn-loc-allow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.btn-ghost {
+  background: transparent !important;
+  color: var(--text-tertiary) !important;
+  border: none !important;
+  font-weight: 600 !important;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.btn-ghost:hover {
+  opacity: 1;
+}
+
+/* Banner Variants */
+.vets-page__loc-banner--loading {
+  background: linear-gradient(135deg, #fef9e7 0%, #fef3cd 100%);
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.dark .vets-page__loc-banner--loading {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.06) 0%, rgba(234, 179, 8, 0.04) 100%);
+  border-color: rgba(245, 158, 11, 0.12);
+}
+
+.vets-page__loc-banner--loading .vets-page__loc-banner-icon {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+}
+
+.vets-page__loc-banner--success {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.dark .vets-page__loc-banner--success {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, rgba(5, 150, 105, 0.04) 100%);
+  border-color: rgba(16, 185, 129, 0.12);
+}
+
+.vets-page__loc-banner--success .vets-page__loc-banner-icon {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+
+.vets-page__loc-banner--denied {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  border-color: rgba(239, 68, 68, 0.15);
+}
+
+.dark .vets-page__loc-banner--denied {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.06) 0%, rgba(220, 38, 38, 0.04) 100%);
+  border-color: rgba(239, 68, 68, 0.1);
+}
+
+.vets-page__loc-banner--denied .vets-page__loc-banner-icon {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.25);
+}
+
+/* Search & Toolbar */
+.vets-page__toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.vets-page__search {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.vets-page__search svg {
+  position: absolute;
+  left: 16px;
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.vets-page__search .input-field {
+  padding-left: 44px;
+}
+
+/* Filters */
+.vets-page__filters {
+  background: var(--bg-card);
+  border-radius: var(--radius-2xl);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: slide-up 0.3s ease-out;
+}
+
+.vets-page__filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vets-page__filter-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.813rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.vets-page__filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter-pill {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1.5px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filter-pill:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.filter-pill.active {
+  background: var(--accent-blue);
+  color: white;
+  border-color: var(--accent-blue);
+}
+
+/* Nearby pill special styling */
+.filter-pill--nearby {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+  border-color: rgba(16, 185, 129, 0.2);
+  color: #059669;
+}
+
+.filter-pill--nearby:hover {
+  border-color: #059669;
+  color: #059669;
+}
+
+.filter-pill--nearby.active {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border-color: #059669;
+}
+
+.dark .filter-pill--nearby {
+  background: rgba(16, 185, 129, 0.08);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.15);
+}
+
+.dark .filter-pill--nearby.active {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.filter-pill--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.filter-pill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+  display: inline-block;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.filter-pill--nearby.active .filter-pill__dot {
+  background: white;
+}
+
+@keyframes pulse-dot {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.4);
+  }
+}
+
+.vets-page__toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.813rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.vets-page__toggle input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent-green);
+  cursor: pointer;
+}
+
+/* Grid */
+.vets-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* Vet Profile Modal */
+.vet-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.vet-profile__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.vet-profile__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.vet-profile__spec {
+  color: var(--accent-blue);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.vet-profile__rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.vet-profile__rating span {
+  font-size: 0.813rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+.vet-profile__details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+}
+
+.vet-profile__detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 0.875rem;
+}
+
+.vet-profile__detail strong {
+  color: var(--text-tertiary);
+  font-weight: 600;
+  min-width: 100px;
+}
+
+.vet-profile__detail span {
+  text-align: right;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.vet-profile__distance {
+  color: #059669 !important;
+  font-weight: 700 !important;
+}
+
+.vet-profile__map {
+  display: flex;
+  flex-direction: column;
+}
+
+.vet-profile__reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vet-profile__reviews h4 {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.vet-profile__no-reviews {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.vet-profile__review {
+  padding: 12px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.vet-profile__review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.vet-profile__review-date {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.vet-profile__review p {
+  font-size: 0.813rem;
+  line-height: 1.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .vets-page__loc-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 16px;
+  }
+
+  .vets-page__loc-banner-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-loc-allow {
+    width: 100%;
+    justify-content: center;
+  }
+}

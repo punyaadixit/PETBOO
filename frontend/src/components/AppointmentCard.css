@@ -1,0 +1,144 @@
+.appointment-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-2xl);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-left: 4px solid var(--accent-blue);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: all var(--transition-base);
+  animation: slide-up 0.4s ease-out both;
+}
+
+.appointment-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.appointment-card--completed { border-left-color: var(--accent-green); }
+.appointment-card--cancelled { border-left-color: #ef4444; opacity: 0.7; }
+
+.appointment-card__top {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.appointment-card__pet-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--accent-orange-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.appointment-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.appointment-card__pet-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.appointment-card__vet-name {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.appointment-card__clinic {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.appointment-card__badges {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.688rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge--blue { background: var(--accent-blue-light); color: var(--accent-blue); }
+.badge--green { background: var(--accent-green-light); color: var(--accent-green); }
+.badge--purple { background: var(--accent-purple-light); color: var(--accent-purple); }
+.badge--teal { background: var(--accent-teal-light); color: var(--accent-teal); }
+.badge--red { background: #fee2e2; color: #ef4444; }
+.badge--orange { background: var(--accent-orange-light); color: var(--accent-orange); }
+
+.badge--outline {
+  background: transparent;
+  border: 1.5px solid currentColor;
+}
+
+.appointment-card__middle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.appointment-card__datetime {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.813rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.appointment-card__datetime svg {
+  color: var(--accent-orange);
+}
+
+.appointment-card__notes {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 0.813rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  flex-basis: 100%;
+}
+
+.appointment-card__notes svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--text-tertiary);
+}
+
+.appointment-card__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dark .badge--blue { background: rgba(59, 130, 246, 0.2); }
+.dark .badge--green { background: rgba(16, 185, 129, 0.2); }
+.dark .badge--purple { background: rgba(139, 92, 246, 0.2); }
+.dark .badge--teal { background: rgba(20, 184, 166, 0.2); }
+.dark .badge--red { background: rgba(239, 68, 68, 0.2); }
+.dark .badge--orange { background: rgba(245, 158, 11, 0.2); }

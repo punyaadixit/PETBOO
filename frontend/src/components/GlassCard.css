@@ -1,0 +1,40 @@
+.glass-card {
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-xl);
+  border: 2px solid transparent;
+  transition: all var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+}
+
+.dark .glass-card {
+  background: var(--bg-card);
+  border-color: var(--glass-border);
+}
+
+.glass-card--hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.glass-card--glow-teal {
+  background: var(--accent-green-light);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.glass-card--glow-purple {
+  background: var(--accent-purple-light);
+  border-color: rgba(168, 85, 247, 0.2);
+}
+
+.glass-card--glow-pink {
+  background: var(--accent-pink-light);
+  border-color: rgba(236, 72, 153, 0.2);
+}
+
+.glass-card--glow-amber {
+  background: var(--accent-orange-light);
+  border-color: rgba(249, 115, 22, 0.2);
+}
