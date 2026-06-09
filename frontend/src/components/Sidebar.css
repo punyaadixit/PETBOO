@@ -1,0 +1,184 @@
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-sidebar);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px;
+  transition: width var(--transition-slow);
+  overflow: hidden;
+  color: var(--text-secondary);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+}
+
+.dark .sidebar {
+  background: var(--bg-sidebar);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar--collapsed {
+  width: var(--sidebar-collapsed);
+  padding: 32px 16px;
+}
+
+/* ── Logo ────────────────────────────────────────────────────────────── */
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px;
+  margin-bottom: 40px;
+}
+
+.sidebar__logo-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-orange);
+}
+
+.sidebar__logo-text {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.sidebar__logo-text span {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* ── Navigation ──────────────────────────────────────────────────────── */
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(115, 192, 159, 0.4) transparent;
+  padding-right: 4px;
+  margin-right: -4px;
+}
+
+.sidebar__nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar__nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar__nav::-webkit-scrollbar-thumb {
+  background: rgba(115, 192, 159, 0.4);
+  border-radius: 99px;
+}
+
+.sidebar__nav::-webkit-scrollbar-thumb:hover {
+  background: rgba(115, 192, 159, 0.7);
+}
+
+.sidebar__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  border-radius: var(--radius-full);
+  font-size: 0.938rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.sidebar__link:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.sidebar__link-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: transform var(--transition-bounce);
+}
+
+.sidebar__link:hover .sidebar__link-icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.sidebar__link-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Active State ────────────────────────────────────────────────────── */
+.sidebar__link--active {
+  color: white;
+  background: #73c09f; /* Reference green */
+  font-weight: 800;
+}
+
+.sidebar__link--active:hover {
+  background: #64b392;
+  color: white;
+}
+
+/* ── User Profile Bottom ─────────────────────────────────────────────── */
+.sidebar__user {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sidebar__user:hover {
+  background: #f1f5f9;
+}
+
+.sidebar__user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar__user-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar__user-info strong {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.sidebar__user-info span {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+/* ── Collapse Toggle ─────────────────────────────────────────────────── */
+.sidebar__toggle {
+  display: none; /* Hide for now, layout usually fixed in this design */
+}

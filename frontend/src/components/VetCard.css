@@ -1,0 +1,158 @@
+.vet-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: slide-up 0.4s ease-out both;
+  position: relative;
+}
+
+/* Distance Badge */
+.vet-card__distance-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  font-size: 0.688rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  z-index: 2;
+  animation: badge-pop 0.3s ease-out;
+}
+
+@keyframes badge-pop {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.vet-card__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.vet-card__avatar {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.vet-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vet-card__status {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.vet-card__status.available {
+  background: var(--accent-green);
+}
+
+.vet-card__status.unavailable {
+  background: #9ca3af;
+}
+
+.vet-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.vet-card__name {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.vet-card__spec {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.813rem;
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+.vet-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vet-card__detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.813rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.vet-card__detail svg {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.vet-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.vet-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vet-card__rating-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.vet-card__actions {
+  display: flex;
+  gap: 6px;
+}
+
+.dark .vet-card__status {
+  border-color: var(--bg-card);
+}

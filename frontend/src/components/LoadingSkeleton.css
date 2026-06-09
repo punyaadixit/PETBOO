@@ -1,0 +1,66 @@
+.skeleton {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.skeleton--card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  border-radius: var(--radius-lg);
+}
+
+.skeleton--stat {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: var(--space-lg) var(--space-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  border-radius: var(--radius-lg);
+}
+
+.skeleton--chat {
+  margin-bottom: var(--space-md);
+}
+
+.skeleton__line {
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, var(--glass-bg) 25%, var(--glass-bg-hover) 50%, var(--glass-bg) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+.skeleton__line--lg { height: 16px; width: 80%; }
+.skeleton__line--md { height: 14px; width: 60%; }
+.skeleton__line--sm { height: 12px; width: 40%; }
+.skeleton__line--xs { height: 10px; width: 50%; }
+
+.skeleton__circle {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+  background: linear-gradient(90deg, var(--glass-bg) 25%, var(--glass-bg-hover) 50%, var(--glass-bg) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+.skeleton__lines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton__bubble {
+  height: 50px;
+  width: 65%;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(90deg, var(--glass-bg) 25%, var(--glass-bg-hover) 50%, var(--glass-bg) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}

@@ -1,0 +1,40 @@
+.animated-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  background: var(--bg-app); /* Soft green gradient */
+  pointer-events: none;
+}
+
+.animated-bg__particle {
+  position: absolute;
+  opacity: 0;
+  animation: float-up-fade linear infinite;
+}
+
+.animated-bg__icon {
+  color: var(--accent-green);
+  opacity: 0.15;
+}
+
+.animated-bg__icon--sparkle {
+  color: var(--accent-orange);
+}
+
+@keyframes float-up-fade {
+  0% {
+    transform: translateY(100px) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-500px) rotate(180deg);
+    opacity: 0;
+  }
+}
