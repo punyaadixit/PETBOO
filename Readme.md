@@ -148,10 +148,12 @@ SUPABASE_ANON_KEY=your_supabase_anon_key
 ### `petsphere-frontend/.env`
 
 ```env
+VITE_API_URL=http://localhost:5000
 REACT_APP_SUPABASE_URL=https://your-project.supabase.co
 REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key
-REACT_APP_BACKEND_URL=http://localhost:5000
 ```
+
+For GitHub Pages deployment, set the secret `VITE_API_URL` to your backend base URL (for example `https://api.example.com`).
 
 > ⚠️ **Never commit `.env` files to version control.** They are excluded via `.gitignore`.
 

@@ -8,8 +8,12 @@ import { api } from '../lib/api';
 import AddMedicalRecordModal from './AddMedicalRecordModal';
 import './MedicalRecordsTab.css';
 
-// Files served via Vite proxy at /uploads
-const BASE_URL = '';
+const rawApiUrl = import.meta.env.VITE_API_URL;
+const BASE_URL = rawApiUrl ? rawApiUrl.replace(/\/$/, '') : '';
+
+function buildApiPath(path) {
+  return BASE_URL ? `${BASE_URL}${path}` : path;
+}
 
 function formatDate(d) {
   if (!d) return '—';
@@ -212,7 +216,7 @@ export default function MedicalRecordsTab({ petId, petName }) {
     const fd = new FormData();
     fd.append('file', file);
     const res = await fetch(
-      `/api/v1/pets/${petId}/medical/${recordId}/files`,
+      buildApiPath(`/api/v1/pets/${petId}/medical/${recordId}/files`),
       { method: 'POST', body: fd, headers: { Authorization: `Bearer ${token}` } }
     );
     if (!res.ok) throw new Error('Upload failed');
@@ -241,7 +245,7 @@ export default function MedicalRecordsTab({ petId, petName }) {
     }
 
     try {
-      const res = await fetch(`/api/v1/pets/${petId}/medical/auto-extract`, {
+      const res = await fetch(buildApiPath(`/api/v1/pets/${petId}/medical/auto-extract`), {
         method: 'POST',
         body: fd,
         headers: { Authorization: `Bearer ${token}` }
