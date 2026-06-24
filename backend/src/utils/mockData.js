@@ -794,6 +794,64 @@ const groomingReviews = [
   { id: 'greview-001', userId: 'demo-user-001', groomerId: 'groomer-001', rating: 5, comment: 'Priya did an amazing job with Buddy!', createdAt: new Date().toISOString() }
 ];
 
+const vaccinations = [];
+const medicalRecords = [];
+const activityLogs = [];
+
+function seedActivityLogs() {
+  const buddyPetId = pets[0]?.id || 'pet-demo-buddy';
+  const miloPetId = pets[1]?.id || 'pet-demo-milo';
+  const lunaPetId = pets[2]?.id || 'pet-demo-luna';
+
+  // Seed some vaccinations and medical records for Buddy so he has a health score!
+  vaccinations.push({
+    id: uuid(),
+    petId: buddyPetId,
+    vaccineName: 'Rabies vaccine',
+    vaccinationDate: new Date(Date.now() - 60 * 86400000).toISOString().split('T')[0],
+    nextDueDate: new Date(Date.now() + 300 * 86400000).toISOString().split('T')[0],
+    doctorName: 'Dr. Priya Sharma',
+    clinicName: 'PawCare Animal Hospital',
+    createdAt: new Date().toISOString()
+  });
+  medicalRecords.push({
+    id: uuid(),
+    petId: buddyPetId,
+    visitDate: new Date(Date.now() - 30 * 86400000).toISOString().split('T')[0],
+    doctorName: 'Dr. Priya Sharma',
+    clinicName: 'PawCare Animal Hospital',
+    symptoms: 'Mild lethargy',
+    diagnosis: 'Healthy checkup',
+    prescriptionNotes: 'None',
+    medicines: 'None',
+    createdAt: new Date().toISOString()
+  });
+
+  // Seed activities for last 7 days
+  for (let i = 0; i < 7; i++) {
+    const dateStr = new Date(Date.now() - i * 86400000).toISOString().split('T')[0];
+    
+    // Buddy
+    activityLogs.push({ id: uuid(), petId: buddyPetId, type: 'exercise', value: Math.floor(Math.random() * 30) + 30, date: dateStr, createdAt: new Date().toISOString() });
+    activityLogs.push({ id: uuid(), petId: buddyPetId, type: 'nutrition', value: Math.floor(Math.random() * 100) + 450, date: dateStr, createdAt: new Date().toISOString() });
+    activityLogs.push({ id: uuid(), petId: buddyPetId, type: 'hydration', value: Math.floor(Math.random() * 200) + 700, date: dateStr, createdAt: new Date().toISOString() });
+    activityLogs.push({ id: uuid(), petId: buddyPetId, type: 'sleep', value: Math.round((Math.random() * 2 + 8) * 10) / 10, date: dateStr, createdAt: new Date().toISOString() });
+
+    // Milo
+    activityLogs.push({ id: uuid(), petId: miloPetId, type: 'exercise', value: Math.floor(Math.random() * 15) + 15, date: dateStr, createdAt: new Date().toISOString() });
+    activityLogs.push({ id: uuid(), petId: miloPetId, type: 'nutrition', value: Math.floor(Math.random() * 30) + 200, date: dateStr, createdAt: new Date().toISOString() });
+    activityLogs.push({ id: uuid(), petId: miloPetId, type: 'hydration', value: Math.floor(Math.random() * 50) + 220, date: dateStr, createdAt: new Date().toISOString() });
+    activityLogs.push({ id: uuid(), petId: miloPetId, type: 'sleep', value: Math.round((Math.random() * 3 + 11) * 10) / 10, date: dateStr, createdAt: new Date().toISOString() });
+
+    // Luna
+    activityLogs.push({ id: uuid(), petId: lunaPetId, type: 'exercise', value: Math.floor(Math.random() * 20) + 25, date: dateStr, createdAt: new Date().toISOString() });
+    activityLogs.push({ id: uuid(), petId: lunaPetId, type: 'nutrition', value: Math.floor(Math.random() * 80) + 400, date: dateStr, createdAt: new Date().toISOString() });
+    activityLogs.push({ id: uuid(), petId: lunaPetId, type: 'hydration', value: Math.floor(Math.random() * 150) + 600, date: dateStr, createdAt: new Date().toISOString() });
+    activityLogs.push({ id: uuid(), petId: lunaPetId, type: 'sleep', value: Math.round((Math.random() * 2 + 9) * 10) / 10, date: dateStr, createdAt: new Date().toISOString() });
+  }
+}
+seedActivityLogs();
+
 /* ──────────────────── Helper Methods ──────────────────── */
 
 const mockDB = {
@@ -1122,6 +1180,48 @@ const mockDB = {
     groomingBookings[idx].status = 'cancelled';
     return groomingBookings[idx];
   },
+
+  /* --- In-memory activities, vaccines, medical records --- */
+  getActivityLogsForPet(petId) {
+    return activityLogs.filter(a => a.petId === petId).sort((a, b) => new Date(a.date) - new Date(b.date));
+  },
+  addActivityLog({ petId, type, value, date }) {
+    const log = {
+      id: uuid(),
+      petId,
+      type,
+      value: Number(value),
+      date: date || new Date().toISOString().split('T')[0],
+      createdAt: new Date().toISOString()
+    };
+    activityLogs.push(log);
+    return log;
+  },
+  getVaccinations(petId) {
+    return vaccinations.filter(v => v.petId === petId).sort((a, b) => new Date(b.vaccinationDate) - new Date(a.vaccinationDate));
+  },
+  addVaccination(data) {
+    const v = {
+      id: uuid(),
+      ...data,
+      createdAt: new Date().toISOString()
+    };
+    vaccinations.push(v);
+    return v;
+  },
+  getMedicalRecords(petId) {
+    return medicalRecords.filter(m => m.petId === petId).sort((a, b) => new Date(b.visitDate) - new Date(a.visitDate));
+  },
+  addMedicalRecord(data) {
+    const m = {
+      id: uuid(),
+      ...data,
+      files: [],
+      createdAt: new Date().toISOString()
+    };
+    medicalRecords.push(m);
+    return m;
+  }
 };
 
 module.exports = { mockDB, uuid };
